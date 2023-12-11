@@ -21,24 +21,29 @@ class MainActivity : AppCompatActivity() {
 
         //bottom navigation
         binding.bottomNavigation.setOnItemSelectedListener { item ->
-            bottomNavChange(item)
+            handleNavigationSelection(item)
         }
     }
 
-    private fun bottomNavChange(item: MenuItem): Boolean {
-        when (binding.bottomNavigation.selectedItemId) {
+    private fun handleNavigationSelection(item: MenuItem): Boolean {
+        return when (item.itemId) {
             R.id.navigation_home -> {
                 supportFragmentManager.commit {
+                    setReorderingAllowed(true)
                     replace(R.id.fragment_container, HomePage())
                 }
-            } //end of home
+                true
+            }
+
             R.id.navigation_rewards -> {
                 supportFragmentManager.commit {
+                    setReorderingAllowed(true)
                     replace(R.id.fragment_container, RewardsPage())
                 }
-            } //end of wallet
-        }
-        return true
+                true
+            }
 
+            else -> false
+        }
     }
 }
