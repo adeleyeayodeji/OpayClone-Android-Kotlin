@@ -18,11 +18,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         //set content view
         setContentView(binding.root)
-
-        //bottom navigation
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            handleNavigationSelection(item)
-        }
     }
 
     private fun handleNavigationSelection(item: MenuItem): Boolean {
